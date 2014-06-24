@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transfer: 1
+  check: 1
+  deposit: 1
+
+two:
+  transfer: 1
+  check: 1
+  deposit: 1

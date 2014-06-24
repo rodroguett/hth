@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  electronic_dispatch: 1
+  dispatch_ticket: 1
+  dispatch_date: 2014-06-23 16:20:45
+
+two:
+  electronic_dispatch: 1
+  dispatch_ticket: 1
+  dispatch_date: 2014-06-23 16:20:45
