@@ -1,0 +1,27 @@
+<h1>Listing sale_processes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sale_processes.each do |sale_process| %>
+      <tr>
+        <td><%= sale_process.name %></td>
+        <td><%= sale_process.description %></td>
+        <td><%= link_to 'Show', sale_process %></td>
+        <td><%= link_to 'Edit', edit_sale_process_path(sale_process) %></td>
+        <td><%= link_to 'Destroy', sale_process, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sale process', new_sale_process_path %>
