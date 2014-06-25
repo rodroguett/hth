@@ -15,6 +15,10 @@ class SaleProcessesController < ApplicationController
   # GET /sale_processes/new
   def new
     @sale_process = SaleProcess.new
+    @sale = Sale.new
+    @dispatch = Dispatch.new
+    @billing = Billing.new
+    @account = Account.new
   end
 
   # GET /sale_processes/1/edit
@@ -25,10 +29,14 @@ class SaleProcessesController < ApplicationController
   # POST /sale_processes.json
   def create
     @sale_process = SaleProcess.new(sale_process_params)
+    @sale = @sale_process.build_sale
+    @dispatch = @sale_process.build_dispatch
+    @billing = @sale_process.build_billing
+    @account = @sale_process.build_account
 
     respond_to do |format|
       if @sale_process.save
-        format.html { redirect_to @sale_process, notice: 'Sale process was successfully created.' }
+        format.html { redirect_to @sale_process, notice: 'Proceso de venta se creo correctamente.' }
         format.json { render :show, status: :created, location: @sale_process }
       else
         format.html { render :new }
@@ -42,7 +50,7 @@ class SaleProcessesController < ApplicationController
   def update
     respond_to do |format|
       if @sale_process.update(sale_process_params)
-        format.html { redirect_to @sale_process, notice: 'Sale process was successfully updated.' }
+        format.html { redirect_to @sale_process, notice: 'Proceso de venta se actualizó correctamente.' }
         format.json { render :show, status: :ok, location: @sale_process }
       else
         format.html { render :edit }
@@ -71,4 +79,5 @@ class SaleProcessesController < ApplicationController
     def sale_process_params
       params.require(:sale_process).permit(:name, :description)
     end
+
 end

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @sale.price %>
+</p>
+<p>
+  <strong>Nota de venta:</strong>
+  <%= @sale.sale_note %>
+</p>
+<p>
+  <strong>Orden de compra:</strong>
+  <%= @sale.purchase_order %>
+</p>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sale_processes_path %>

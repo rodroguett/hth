@@ -1,10 +1,14 @@
-<h1>Listing sale_processes</h1>
+<h1>Proceso de Venta</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th>Proceso</th>
+      <th>Venta</th>
+      <th>Despacho</th>
+      <th>Facturación</th>
+      <th>Contabilidad</th>
+      <!--<th>Opciones</th>-->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,11 +16,14 @@
   <tbody>
     <% @sale_processes.each do |sale_process| %>
       <tr>
-        <td><%= sale_process.name %></td>
-        <td><%= sale_process.description %></td>
-        <td><%= link_to 'Show', sale_process %></td>
-        <td><%= link_to 'Edit', edit_sale_process_path(sale_process) %></td>
-        <td><%= link_to 'Destroy', sale_process, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to sale_process.name, edit_sale_process_path(sale_process) %></td>
+        <td><%= link_to 'Venta', edit_sale_path(sale_process.sale.id) %></td>
+        <td><%= link_to 'Despacho', edit_dispatch_path(sale_process.dispatch.id) %></td>
+        <td><%= link_to 'Facturación', edit_billing_path(sale_process.billing.id)%></td>
+        <td><%= link_to 'Contabilidad', edit_account_path(sale_process.account.id) %></td>
+        <td><%= link_to 'Mostrar', sale_process %></td>
+        <td><%= link_to 'Editar', edit_sale_process_path(sale_process) %></td>
+        <td><%= link_to 'Eliminar', sale_process, method: :delete, data: { confirm: 'Está seguro que quiere eliminar el proceso de venta?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Sale process', new_sale_process_path %>
+<%= link_to 'Nuevo Proceso de Venta', new_sale_process_path %>

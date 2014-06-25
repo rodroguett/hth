@@ -1,0 +1,29 @@
+<%= form_for(@dispatch) do |f| %>
+  <% if @dispatch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dispatch.errors.count, "error") %> prohibited this dispatch from being saved:</h2>
+
+      <ul>
+      <% @dispatch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :electronic_dispatch %><br>
+    <%= f.text_field :electronic_dispatch %>
+  </div>
+  <div class="field">
+    <%= f.label :dispatch_ticket %><br>
+    <%= f.text_area :dispatch_ticket %>
+  </div>
+  <div class="field">
+    <%= f.label :dispatch_date %><br>
+    <%= f.date_field :dispatch_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Contabilidad</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transfer</th>
+      <th>Check</th>
+      <th>Deposit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dispatches.each do |dispatch| %>
+      <tr>
+        <td><%= dispatch.electronic_dispatch %></td>
+        <td><%= dispatch.dispatch_ticket %></td>
+        <td><%= dispatch.dispatch_date %></td>
+        <td><%= link_to 'Show', dispatch %></td>
+        <td><%= link_to 'Edit', edit_dispatch_path(dispatch) %></td>
+        <td><%= link_to 'Destroy', dispatch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New dispatch', new_dispatch_path %>

@@ -56,4 +56,7 @@ Rails.application.routes.draw do
 
   resources :sale_processes
   resources :accounts
+  resources :billings
+  resources :dispatches
+  resources :sales
 end

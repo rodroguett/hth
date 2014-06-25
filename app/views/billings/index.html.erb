@@ -1,0 +1,27 @@
+<h1>Contabilidad</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bill</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @billings.each do |billing| %>
+      <tr>
+        <td><%= billing.transfer %></td>
+        <td><%= billing.check %></td>
+        <td><%= billing.deposit %></td>
+        <td><%= link_to 'Show', billing %></td>
+        <td><%= link_to 'Edit', edit_billing_path(billing) %></td>
+        <td><%= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New billing', new_billing_path %>

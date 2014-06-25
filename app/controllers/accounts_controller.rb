@@ -41,7 +41,7 @@ before_action :set_account, only: [:show, :edit, :update, :destroy]
   # PATCH/PUT /accounts/1.json
   def update
     respond_to do |format|
-      if @account.update(sale_process_params)
+      if @account.update(account_params)
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
         format.json { render :show, status: :ok, location: @account }
       else

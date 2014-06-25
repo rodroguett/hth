@@ -2,18 +2,18 @@
 
 <p>
   <strong>Transfer:</strong>
-  <%= @account.transfer %>
+  <%= @dispatch.electronic_dispatch %>
 </p>
 
 <p>
   <strong>Check:</strong>
-  <%= @account.check %>
+  <%= @dispatch.dispatch_ticket %>
 </p>
 
 <p>
   <strong>Deposit:</strong>
-  <%= @account.deposit %>
+  <%= @dispatch.dispatch_date %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Edit', edit_dispatch_path(@dispatch) %> |
 <%= link_to 'Back', sale_processes_path %>

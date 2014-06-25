@@ -1,0 +1,1 @@
+json.extract! @dispatch, :id, :electronic_dispatch, :dispatch_ticket, :dispatch_date, :created_at, :updated_at
