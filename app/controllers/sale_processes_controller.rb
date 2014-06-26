@@ -79,5 +79,4 @@ class SaleProcessesController < ApplicationController
     def sale_process_params
       params.require(:sale_process).permit(:name, :description)
     end
-
 end

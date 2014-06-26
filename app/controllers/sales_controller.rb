@@ -69,6 +69,6 @@ before_action :set_sale, only: [:show, :edit, :update, :destroy]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:electronic_sale, :sale_ticket, :sale_date)
+      params.require(:sale).permit(:price, :sale_note, :purchase_order)
     end
 end
