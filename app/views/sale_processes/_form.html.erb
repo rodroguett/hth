@@ -1,25 +1,36 @@
 <%= form_for(@sale_process) do |f| %>
-  <% if @sale_process.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sale_process.errors.count, "error") %> prohibited this sale_process from being saved:</h2>
 
-      <ul>
-      <% @sale_process.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @sale_process.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@sale_process.errors.count, "error") %> prohibited this sale_process from being saved:</h2>
+
+            <ul>
+                <% @sale_process.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+
+    <div class="field">
+        <%= f.label :Nombre %><br>
+        <%= f.text_field :name %>
     </div>
-  <% end %>
+    <div class="field">
+        <%= f.label :Descripción %><br>
+        <%= f.text_area :description %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :descipcion %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+    <%= f.fields_for :client do |client_fields| %>
+        <%= client_fields.label :Cliente %></br>
+        <%= client_fields.select(:id, @clients, :prompt => 'Seleccione cliente') %>
+        </br>
+    <% end %>
+    </br>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
 <% end %>

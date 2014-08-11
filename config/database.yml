@@ -21,8 +21,8 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
-# development:
-#   <<: *default
-#   database: hth_development
-#   username: 'root'
-#   password: 'mysql'
+development:
+  <<: *default
+  database: hth_development
+  username: 'root'
+  password: 'mysql'

@@ -1,17 +1,18 @@
+<h1 class="page-header">Venta</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Precio:</strong>
-  <%= @sale.price %>
+	<strong>Precio:</strong>
+	<%= @sale.price %>
 </p>
 <p>
-  <strong>Nota de venta:</strong>
-  <%= @sale.sale_note %>
+  	<strong>Nota de venta:</strong>
+  	<%= @sale.sale_note %>
 </p>
 <p>
-  <strong>Orden de compra:</strong>
-  <%= @sale.purchase_order %>
+  	<strong>Orden de compra:</strong>
+  	<%= @sale.purchase_order %>
 </p>
 
-<%= link_to 'Edit', edit_sale_path(@sale) %> |
-<%= link_to 'Back', sale_processes_path %>
+<%= link_to 'Editar Venta', edit_sale_path(@sale) %>

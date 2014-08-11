@@ -1,14 +1,19 @@
+<h1 class="page-header">Proceso de Venta</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @sale_process.name %>
+	<strong>Nombre:</strong>
+	<%= @sale_process.name %>
 </p>
-
 <p>
-  <strong>Description:</strong>
-  <%= @sale_process.description %>
+  	<strong>Descripcion:</strong>
+  	<%= @sale_process.description %>
+</p>
+<p>
+  	<strong>Cliente:</strong>
+  	<%= @sale_process.client.name %>
 </p>
 
-<%= link_to 'Edit', edit_sale_process_path(@sale_process) %> |
-<%= link_to 'Back', sale_processes_path %>
+
+<%= link_to 'Editar Proceso de Venta', edit_sale_process_path(@sale_process) %>
