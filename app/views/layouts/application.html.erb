@@ -3,12 +3,12 @@
 	<head>
 		<title>HTH</title>
         <%= favicon_link_tag 'fav1.png'  %>
+        <link rel="stylesheet" href="/assets/dashboard.css">
+        <%= stylesheet_link_tag "bootstrap", media: "all", "data-turbolinks-track" => true %>
+        <%= javascript_include_tag "bootstrap", "data-turbolinks-track" => true %> 
         <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
         <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
         <%= csrf_meta_tags %>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/assets/dashboard.css"> 
-        <script src="/assets/bootstrap.js"></script>
     </head>
     
 	<body>
@@ -40,14 +40,31 @@
                 		<li><a href="#">Menu 3</a></li>
                 		<li><a href="#">Menu 4</a></li>
               		</ul>
-              
             	</div>
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
                     <%= yield %>
                     <%= render 'layouts/footer' %>
+                <!--
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1 class="page-header">Dashboard</h1>
+
+
+                    <h2 class="sub-header">Section title</h2>
+                    <div class="table-responsive">
+            
+                    </div>
                 </div>
+                -->
+
+
+
+
+
+
+
+
                 
     	    </div>
 
