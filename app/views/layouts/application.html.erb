@@ -6,7 +6,10 @@
         <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
         <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
         <%= csrf_meta_tags %>
+        <!--
         <link rel="stylesheet" href="/assets/dashboard.css">
+        -->
+        <%= stylesheet_link_tag "dashboard" %>
 
     </head>
     
@@ -44,12 +47,11 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
                     <%= yield %>
-                    <%= render 'layouts/footer' %>
 
     	       </div>
 
             </div>
-            
+
         </div>
 	
     </body>
