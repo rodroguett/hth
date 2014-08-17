@@ -1,4 +1,5 @@
 class SaleProcessesController < ApplicationController
+
     before_action :set_sale_process, only: [:show, :edit, :update, :destroy]
 
       # GET /sale_processes
@@ -20,7 +21,7 @@ class SaleProcessesController < ApplicationController
         @billing = Billing.new
         @account = Account.new
         @client = Client.new
-
+        
         @clients = Client.all.map { |client| [client.name, client.id] }
 
     end
@@ -38,7 +39,6 @@ class SaleProcessesController < ApplicationController
         @dispatch = @sale_process.build_dispatch
         @billing = @sale_process.build_billing
         @account = @sale_process.build_account
-        @client = @sale_process.build_client(client_params)
 
         respond_to do |format|
           if @sale_process.save
@@ -83,11 +83,7 @@ class SaleProcessesController < ApplicationController
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def sale_process_params
-            params.require(:sale_process).permit(:name, :description)
-        end
-
-        def client_params
-            params.require(:client).permit(:id)
+            params.require(:sale_process).permit(:name, :description, :client_id)
         end
 
 end

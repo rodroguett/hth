@@ -1,0 +1,14 @@
+
+
+<% if user_signed_in? %>
+    <p>Bienvenido <%= current_user.email %></p>
+    <p>Bienvenido <%= current_user.to_yaml %></p>
+    <p><%= link_to "Cerrar sesion", destroy_user_session_path, method: :delete %></p>
+
+
+<% else %>
+    <p><%= link_to "Crea una cuenta", new_user_registration_path %></p>
+    <p>Si ya tienes una cuenta <%= link_to "logueate", new_user_session_path %></p>
+<% end %>
+
+<p> Wilkommen! </p>

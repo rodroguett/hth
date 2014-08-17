@@ -21,13 +21,11 @@
         <%= f.label :Descripción %><br>
         <%= f.text_area :description %>
     </div>
-
-
-    <%= f.fields_for :client do |client_fields| %>
-        <%= client_fields.label :Cliente %></br>
-        <%= client_fields.select(:id, @clients, :prompt => 'Seleccione cliente') %>
+    <div class="field">
+        <%= f.label :Cliente %><br>
+        <%= f.select(:client_id, @clients, :prompt => 'Seleccione cliente') %>
         </br>
-    <% end %>
+    </div>
     </br>
 
     <div class="actions">
