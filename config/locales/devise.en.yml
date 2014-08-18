@@ -12,7 +12,7 @@ en:
       invalid: "Invalid email or password."
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
-      not_found_in_database: "Invalid email address or password."
+      not_found_in_database: "Dirección de correo electrónico o contraseña no válidos."
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "Usted debe loguearse antes de continuar."
       unconfirmed: "You have to confirm your email address before continuing."
