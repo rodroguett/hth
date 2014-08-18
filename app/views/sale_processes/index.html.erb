@@ -20,37 +20,60 @@
                     <td><%= sale_process.created_at.to_formatted_s(:day_month_and_year) %></td>
                     <td><%= Client.find(sale_process.client_id).name %></td>
 
-                    <% if sale_process.sale.sale_note.present? %>
+                    <% if sale_process.sale.sale_note.present? && current_user.email == "admin@hth.cl" || current_user.email == "venta@hth.cl" %> <!-- venta o admin && si esta seteada -->
                         <td><%= link_to sale_process.sale.sale_note, edit_sale_path(sale_process.sale.id) %></td>
-                    <% else %>  
-                        <td><%= link_to "Editar Venta", edit_sale_path(sale_process.sale.id) %></td>  
+                    <% elsif sale_process.sale.sale_note.nil? && current_user.email == "admin@hth.cl" || current_user.email == "venta@hth.cl" %>  <!--venta o admin && no esta seteada -->
+                        <td><%= link_to "Editar Venta", edit_sale_path(sale_process.sale.id) %></td>
+                    <% elsif sale_process.sale.sale_note.present? && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && si esta seteada -->
+                        <td><%= sale_process.sale.sale_note %></td>
+                    <% elsif sale_process.sale.sale_note.nil? && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && no esta seteada -->
+                        <td></td>  
                     <% end %>
 
-                    <% if sale_process.dispatch.dispatch_ticket.present? %>
+                    <% if sale_process.dispatch.dispatch_ticket.present? && current_user.email == "admin@hth.cl" || current_user.email == "despacho@hth.cl" %> 
                         <td><%= link_to sale_process.dispatch.dispatch_ticket, edit_dispatch_path(sale_process.dispatch.id) %></td>
-                    <% else %>  
-                        <td><%= link_to "Editar Despacho", edit_dispatch_path(sale_process.dispatch.id) %></td>  
+                    <% elsif sale_process.dispatch.dispatch_ticket.nil? && current_user.email == "admin@hth.cl" || current_user.email == "despacho@hth.cl" %>  
+                        <td><%= link_to "Editar Despacho", edit_dispatch_path(sale_process.dispatch.id) %></td>
+                    <% elsif sale_process.dispatch.dispatch_ticket.present? && current_user.email != "admin@hth.cl" && current_user.email != "despacho@hth.cl"%>
+                        <td><%= sale_process.dispatch.dispatch_ticket %></td>
+                    <% elsif sale_process.dispatch.dispatch_ticket.nil? && current_user.email != "admin@hth.cl" && current_user.email != "despacho@hth.cl" %>
+                        <td></td>
                     <% end %>
 
-                    <% if sale_process.billing.bill.present? %>
-                        <td><%= link_to sale_process.billing.bill, edit_billing_path(sale_process.billing.id)%></td>
-                    <% else %>  
-                        <td><%= link_to "Editar Facturación", edit_billing_path(sale_process.billing.id) %></td>  
+                    <% if sale_process.billing.bill.present?&& current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %> 
+                        <td><%= link_to sale_process.billing.bill, edit_billing_path(sale_process.billing.id) %></td>
+                    <% elsif sale_process.billing.bill.nil? && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>  
+                        <td><%= link_to "Editar Facturación", edit_billing_path(sale_process.billing.id) %></td>
+                    <% elsif sale_process.billing.bill.present? && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
+                        <td><%= sale_process.billing.bill %></td>
+                    <% elsif sale_process.billing.bill.nil? && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
+                        <td></td>
                     <% end %>
 
-                    <% if sale_process.account.transfer.present? %>
+                    <% if sale_process.account.transfer.present? && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                         <td><%= link_to sale_process.account.transfer, edit_account_path(sale_process.account.id) %></td>
-                    <% else %>  
-                        <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.sale.id) %></td>  
+                    <% elsif sale_process.account.transfer.nil? && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
+                        <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.sale.id) %></td>
+                    <% elsif sale_process.account.transfer.present? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
+                        <td><%= sale_process.billing.bill %></td>
+                    <% elsif sale_process.account.transfer.nil? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
+                        <td></td>
                     <% end %>
 
-                    <td><%= button_to "Editar", edit_sale_process_path(sale_process), :method => :get, :class => 'btn btn-mini btn-primary' %></td>
-                    <td><%= button_to 'Eliminar', sale_process, method: :delete, data: { confirm: 'Está seguro que quiere eliminar el proceso de venta?' }, :class => 'btn btn-mini btn-danger' %></td>
+                    <% if current_user.email == "admin@hth.cl" %>
+                        <td><%= button_to "Editar", edit_sale_process_path(sale_process), :method => :get, :class => 'btn btn-mini btn-primary' %></td>
+                        <td><%= button_to 'Eliminar', sale_process, method: :delete, data: { confirm: 'Está seguro que quiere eliminar el proceso de venta?' }, :class => 'btn btn-mini btn-danger' %></td>
+                    <% else %>
+                        <td><%= button_to "Editar", edit_sale_process_path(sale_process), :method => :get, :class => 'disabled btn btn-mini btn-primary' %></td>
+                        <td><%= button_to 'Eliminar', sale_process, method: :delete, data: { confirm: 'Está seguro que quiere eliminar el proceso de venta?' }, :class => 'disabled btn btn-mini btn-danger' %></td>
+                    <% end %>
                 </tr>
             <% end %>
         </tbody>
     </table>
     <br>
 </div>
+<% if current_user.email == "admin@hth.cl" %>
+    <%= button_to "Nuevo Proceso de Venta", new_sale_process_path, :class => 'btn btn-lg btn-info'%>
+<% end %>
 
-<%= button_to "Nuevo Proceso de Venta", new_sale_process_path, :class => 'btn btn-lg btn-info'%>
