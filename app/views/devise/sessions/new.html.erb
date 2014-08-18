@@ -23,6 +23,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
             <div class="account-wall">
                 <img class="profile-img" src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpf1/v/t34.0-12/10617360_10203997437354144_1700327848_n.jpg?oh=7ee3b3b4f7697ddb81395fe524908b3a&oe=53F3C2E1&__gda__=1408482800_0e8be2ea569ebc20a9224e3bcaba1ea9"
                     alt="HTH Global Mining">
@@ -39,7 +41,6 @@
   					<% end -%>
 
   					<div><%= f.submit "Log in", :class => 'btn btn-lg btn-primary btn-block' %></div>
-                    <%= render "devise/shared/links" %>
   				<% end %>
 
             </div>
