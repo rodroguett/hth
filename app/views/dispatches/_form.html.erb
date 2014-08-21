@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :electronic_dispatch %><br>
+    <%= f.label :name, "Despacho electrónico" %><br>
     <%= f.text_field :electronic_dispatch %>
   </div>
   <div class="field">
-    <%= f.label :dispatch_ticket %><br>
+    <%= f.label :name, "Ticket de despacho" %><br>
     <%= f.text_area :dispatch_ticket %>
   </div>
   <div class="field">
-    <%= f.label :dispatch_date %><br>
+    <%= f.label :name, "Fecha de despacho" %><br>
     <%= f.date_field :dispatch_date %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar" %>
   </div>
 <% end %>

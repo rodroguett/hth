@@ -12,19 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :Precio %><br>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :sale_note %><br>
+    <%= f.label :name, "Nota de venta" %><br>
     <%= f.text_area :sale_note %>
   </div>
   <div class="field">
-    <%= f.label :purchase_order %><br>
+    <%= f.label :name, "Orden de compra" %><br>
     <%= f.text_area :purchase_order %>
   </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar" %>
   </div>
 <% end %>

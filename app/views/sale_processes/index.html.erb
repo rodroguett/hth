@@ -16,7 +16,7 @@
         <tbody>
             <% @sale_processes.each do |sale_process| %>
                 <tr>
-                    <td><%= link_to sale_process.description, edit_sale_process_path(sale_process) %></td>
+                    <td><%= link_to sale_process.name, edit_sale_process_path(sale_process) %></td>
                     <td><%= sale_process.created_at.to_formatted_s(:day_month_and_year) %></td>
                     <td><%= Client.find(sale_process.client_id).name %></td>
 
@@ -60,6 +60,7 @@
                         <td></td>
                     <% end %>
 
+                    <td><%= button_to "Mostrar", sale_process_path(sale_process), :method => :get, :class => 'btn btn-mini btn-info' %></td>
                     <% if current_user.email == "admin@hth.cl" %>
                         <td><%= button_to "Editar", edit_sale_process_path(sale_process), :method => :get, :class => 'btn btn-mini btn-primary' %></td>
                         <td><%= button_to 'Eliminar', sale_process, method: :delete, data: { confirm: 'Está seguro que quiere eliminar el proceso de venta?' }, :class => 'btn btn-mini btn-danger' %></td>
@@ -74,6 +75,6 @@
     <br>
 </div>
 <% if current_user.email == "admin@hth.cl" %>
-    <%= button_to "Nuevo Proceso de Venta", new_sale_process_path, :class => 'btn btn-lg btn-info'%>
+    <%= button_to "Nuevo Proceso de Venta", new_sale_process_path, :class => 'btn btn-lg btn-success'%>
 <% end %>
 

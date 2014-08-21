@@ -1,6 +1,4 @@
-<h1 class="page-header">Proceso de Venta</h1>
-
-<p id="notice"><%= notice %></p>
+<h1 class="page-header"><small>Proceso de Venta</small></h1>
 
 <p>
 	<strong>Nombre:</strong>
@@ -15,5 +13,65 @@
   	<%= @sale_process.client.name %>
 </p>
 
+<div class="page-header">
+  <h1><small>Venta</small></h1>
+</div>
+<p>
+	<strong>Precio:</strong>
+	<%= @sale_process.sale.price %>
+</p>
+<p>
+  	<strong>Nota de Venta:</strong>
+  	<%= @sale_process.sale.sale_note %>
+</p>
+<p>
+  	<strong>Orden de Compra:</strong>
+  	<%= @sale_process.sale.purchase_order %>
+</p>
 
-<%= link_to 'Editar Proceso de Venta', edit_sale_process_path(@sale_process) %>
+<div class="page-header">
+  <h1><small>Despacho</small></h1>
+</div>
+<p>
+	<strong>Despacho electrónico:</strong>
+	<%= @sale_process.dispatch.electronic_dispatch %>
+</p>
+<p>
+  	<strong>Ticket de despacho:</strong>
+  	<%= @sale_process.dispatch.dispatch_ticket %>
+</p>
+<p>
+  	<strong>Fecha de despacho:</strong>
+  	<%= @sale_process.dispatch.dispatch_date %>
+</p>
+
+<div class="page-header">
+  <h1><small>Facturación</small></h1>
+</div>
+<p>
+  	<strong>Factura:</strong>
+  	<%= @sale_process.billing.bill %>
+</p>
+
+<div class="page-header">
+  <h1><small>Contabilidad</small></h1>
+</div>
+<p>
+	<strong>Transferencia:</strong>
+	<%= @sale_process.account.transfer %>
+</p>
+<p>
+  	<strong>Cheque:</strong>
+  	<%= @sale_process.account.check %>
+</p>
+<p>
+  	<strong>Depósito:</strong>
+  	<%= @sale_process.account.deposit %>
+</p>
+
+</br>
+</br>
+
+<% if current_user.email == "admin@hth.cl" %>
+    <td><%= button_to "Editar Proceso de Venta", edit_sale_process_path(@sale_process.id), :method => :get, :class => 'btn btn-mini btn-primary' %></td>
+<% end %>
