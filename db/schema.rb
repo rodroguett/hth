@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816051126) do
+ActiveRecord::Schema.define(version: 20140821040545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: true do |t|
-    t.integer  "transfer"
-    t.integer  "check"
-    t.integer  "deposit"
+    t.text     "transfer"
+    t.text     "check"
+    t.text     "deposit"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sale_process_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140816051126) do
   add_index "accounts", ["sale_process_id"], name: "index_accounts_on_sale_process_id", using: :btree
 
   create_table "billings", force: true do |t|
-    t.integer  "bill"
+    t.text     "bill"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sale_process_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140816051126) do
 
   create_table "dispatches", force: true do |t|
     t.integer  "electronic_dispatch"
-    t.integer  "dispatch_ticket"
+    t.text     "dispatch_ticket"
     t.datetime "dispatch_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 20140816051126) do
   end
 
   create_table "sales", force: true do |t|
-    t.integer  "price"
-    t.integer  "sale_note"
-    t.integer  "purchase_order"
+    t.text     "price"
+    t.text     "sale_note"
+    t.text     "purchase_order"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sale_process_id"
