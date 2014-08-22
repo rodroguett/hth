@@ -23,7 +23,7 @@
     </div>
     <div class="field">
         <%= f.label :Cliente %><br>
-        <%= f.select(:client_id, @clients, :prompt => 'Seleccione cliente') %>
+        <%= f.select(:client_id, @clients, {:prompt => 'Seleccione cliente'}, {:required => true}) %>
         </br>
     </div>
     </br>
