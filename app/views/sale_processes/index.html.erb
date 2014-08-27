@@ -40,11 +40,11 @@
                         <td></td>
                     <% end %>
 
-                    <% if sale_process.billing.bill.present? && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %> 
+                    <% if sale_process.billing.bill != "" && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>
                         <td><%= link_to sale_process.billing.bill, edit_billing_path(sale_process.billing.id) %></td>
                     <% elsif sale_process.billing.bill.nil? && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>  
                         <td><%= link_to "Editar Facturación", edit_billing_path(sale_process.billing.id) %></td>
-                    <% elsif sale_process.billing.bill.present? && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
+                    <% elsif sale_process.billing.bill != ""  && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
                         <td><%= sale_process.billing.bill %></td>
                     <% elsif sale_process.billing.bill.nil? && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
                         <td></td>
