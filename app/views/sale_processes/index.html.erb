@@ -40,7 +40,7 @@
                         <td></td>
                     <% end %>
 
-                    <% if sale_process.billing.bill.present?&& current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %> 
+                    <% if sale_process.billing.bill.present? && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %> 
                         <td><%= link_to sale_process.billing.bill, edit_billing_path(sale_process.billing.id) %></td>
                     <% elsif sale_process.billing.bill.nil? && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>  
                         <td><%= link_to "Editar Facturación", edit_billing_path(sale_process.billing.id) %></td>
@@ -96,7 +96,7 @@
                     <% when "its_not_payed" %>
                         <% if current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                             <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.sale.sale_note.nil? && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && no esta seteada -->
+                        <% elsif sale_process.sale.sale_note.nil? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %><!-- otro usuario && no esta seteada -->
                             <td></td>
                         <% end %> 
                     <% end %>
