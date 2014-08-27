@@ -115,7 +115,7 @@
     </table>
     <br>
 </div>
-<% if current_user.email == "admin@hth.cl" %>
+<% if current_user.email == "admin@hth.cl" || current_user.email == "ventas@hth.cl"%>
     <%= button_to "Nuevo Proceso de Venta", new_sale_process_path, :class => 'btn btn-lg btn-success'%>
 <% end %>
 
