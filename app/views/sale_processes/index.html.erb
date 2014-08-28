@@ -96,7 +96,7 @@
                     <% when "its_not_payed" %>
                         <% if current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                             <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.sale.sale_note.nil? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %><!-- otro usuario && no esta seteada -->
+                        <% else %><!-- otro usuario && no esta seteada -->
                             <td></td>
                         <% end %> 
                     <% end %>
