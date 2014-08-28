@@ -66,7 +66,7 @@
                         <% elsif sale_process.account.transfer.nil? && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
                             <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
                         <% elsif sale_process.account.transfer != "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
-                            <td><%= sale_process.billing.bill %></td>
+                            <td><%= sale_process.account.transfer %></td>
                         <% elsif sale_process.account.transfer.nil? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
                             <td></td>
                         <% end %>
@@ -77,7 +77,7 @@
                         <% elsif sale_process.account.check.nil? && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
                             <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
                         <% elsif sale_process.account.check != "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
-                            <td><%= sale_process.billing.bill %></td>
+                            <td><%= sale_process.account.check %></td>
                         <% elsif sale_process.account.check.nil? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
                             <td></td>
                         <% end %>
@@ -88,7 +88,7 @@
                         <% elsif sale_process.account.deposit.nil? && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
                             <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
                         <% elsif sale_process.account.deposit != "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
-                            <td><%= sale_process.billing.bill %></td>
+                            <td><%= sale_process.account.deposit %></td>
                         <% elsif sale_process.account.deposit.nil? && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
                             <td></td>
                         <% end %>
