@@ -20,81 +20,66 @@
                     <td><%= sale_process.created_at.to_formatted_s(:day_month_and_year) %></td>
                     <td><%= Client.find(sale_process.client_id).name %></td>
 
-                    <% if sale_process.sale.sale_note != "" && current_user.email == "admin@hth.cl" || current_user.email == "venta@hth.cl" %> <!-- venta o admin && si esta seteada -->
+                    <% if sale_process.sale.sale_note && current_user.email == "admin@hth.cl" || current_user.email == "venta@hth.cl" %> <!-- venta o admin && si esta seteada -->
                         <td><%= link_to sale_process.sale.sale_note, edit_sale_path(sale_process.sale.id) %></td>
-                    <% elsif sale_process.sale.sale_note == "" && current_user.email == "admin@hth.cl" || current_user.email == "venta@hth.cl" %>  <!--venta o admin && no esta seteada -->
+                    <% elsif sale_process.sale.sale_note.nil? && current_user.email == "admin@hth.cl" || current_user.email == "venta@hth.cl" %>  <!--venta o admin && no esta seteada -->
                         <td><%= link_to "Editar Venta", edit_sale_path(sale_process.sale.id) %></td>
-                    <% elsif sale_process.sale.sale_note != "" && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && si esta seteada -->
+                    <% elsif sale_process.sale.sale_note && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && si esta seteada -->
                         <td><%= sale_process.sale.sale_note %></td>
-                    <% elsif sale_process.sale.sale_note == "" && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && no esta seteada -->
+                    <% elsif sale_process.sale.sale_note.nil? && current_user.email != "admin@hth.cl" && current_user.email != "venta@hth.cl" %><!-- otro usuario && no esta seteada -->
                         <td></td>  
                     <% end %>
 
-                    <% if sale_process.dispatch.electronic_dispatch != "" && current_user.email == "admin@hth.cl" || current_user.email == "despacho@hth.cl" %> 
+                    <% if sale_process.dispatch.electronic_dispatch && current_user.email == "admin@hth.cl" || current_user.email == "despacho@hth.cl" %> 
                         <td><%= link_to sale_process.dispatch.electronic_dispatch, edit_dispatch_path(sale_process.dispatch.id) %></td>
-                    <% elsif sale_process.dispatch.electronic_dispatch == "" && current_user.email == "admin@hth.cl" || current_user.email == "despacho@hth.cl" %>  
+                    <% elsif sale_process.dispatch.electronic_dispatch.nil? && current_user.email == "admin@hth.cl" || current_user.email == "despacho@hth.cl" %>  
                         <td><%= link_to "Editar Despacho", edit_dispatch_path(sale_process.dispatch.id) %></td>
-                    <% elsif sale_process.dispatch.electronic_dispatch != "" && current_user.email != "admin@hth.cl" && current_user.email != "despacho@hth.cl"%>
+                    <% elsif sale_process.dispatch.electronic_dispatch && current_user.email != "admin@hth.cl" && current_user.email != "despacho@hth.cl"%>
                         <td><%= sale_process.dispatch.electronic_dispatch %></td>
-                    <% elsif sale_process.dispatch.electronic_dispatch == "" && current_user.email != "admin@hth.cl" && current_user.email != "despacho@hth.cl" %>
+                    <% elsif sale_process.dispatch.electronic_dispatch.nil? && current_user.email != "admin@hth.cl" && current_user.email != "despacho@hth.cl" %>
                         <td></td>
                     <% end %>
 
-                    <% if sale_process.billing.bill != "" && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>
+                    <% if sale_process.billing.bill && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>
                         <td><%= link_to sale_process.billing.bill, edit_billing_path(sale_process.billing.id) %></td>
-                    <% elsif sale_process.billing.bill == "" && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>  
+                    <% elsif sale_process.billing.bill.nil? && current_user.email == "admin@hth.cl" || current_user.email == "facturacion@hth.cl" %>  
                         <td><%= link_to "Editar Facturación", edit_billing_path(sale_process.billing.id) %></td>
-                    <% elsif sale_process.billing.bill != ""  && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
+                    <% elsif sale_process.billing.bill  && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
                         <td><%= sale_process.billing.bill %></td>
-                    <% elsif sale_process.billing.bill == "" && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
+                    <% elsif sale_process.billing.bill.nil? && current_user.email != "admin@hth.cl" && current_user.email != "facturacion@hth.cl" %>
                         <td></td>
                     <% end %>
 
-                    <% if sale_process.account.transfer != "" %>
+                    <% if sale_process.account.transfer %>
                     <%   pay_type = "transfer" %>
-                    <% elsif sale_process.account.check != "" %>
+                    <% elsif sale_process.account.check %>
                     <%   pay_type = "check" %>
-                    <% elsif sale_process.account.deposit != "" %>
+                    <% elsif sale_process.account.deposit %>
                     <%   pay_type = "deposit" %>
                     <% else %>
                     <%   pay_type = "its_not_payed" %>
                     <% end %>
                     
                     <% case pay_type when "transfer" %>
-                        <% if sale_process.account.transfer != "" && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
+                        <% if current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                             <td><%= link_to sale_process.account.transfer, edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.account.transfer == "" && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
-                            <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.account.transfer != "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
+                        <% elsif current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
                             <td><%= sale_process.account.transfer %></td>
-                        <% elsif sale_process.account.transfer == "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
-                            <td></td>
                         <% end %>
-
                     <% when "check" %>
-                        <% if sale_process.account.check != "" && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
+                        <% if current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                             <td><%= link_to sale_process.account.check, edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.account.check == "" && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
-                            <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.account.check != "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
+                        <% elsif current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
                             <td><%= sale_process.account.check %></td>
-                        <% elsif sale_process.account.check == "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
-                            <td></td>
                         <% end %>
-
                     <% when "deposit" %>
-                        <% if sale_process.account.deposit != "" && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
+                        <% if current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                             <td><%= link_to sale_process.account.deposit, edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.account.deposit == "" && current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %>  
-                            <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
-                        <% elsif sale_process.account.deposit != "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
+                        <% elsif current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
                             <td><%= sale_process.account.deposit %></td>
-                        <% elsif sale_process.account.deposit == "" && current_user.email != "admin@hth.cl" && current_user.email != "contabilidad@hth.cl" %>
-                            <td></td>
                         <% end %>
 
                     <% when "its_not_payed" %>
-                        <p>NO ESTA PAGADO</p>
                         <% if current_user.email == "admin@hth.cl" || current_user.email == "contabilidad@hth.cl" %> 
                             <td><%= link_to "Editar Contabilidad", edit_account_path(sale_process.account.id) %></td>
                         <% else %> <!-- otro usuario && no esta seteada -->
