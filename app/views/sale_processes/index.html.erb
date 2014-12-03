@@ -1,4 +1,19 @@
 <h1 class="page-header">Procesos de Venta</h1>
+
+<%= search_form_for @search do |f| %>
+    <div class="field">
+        <%= f.label 'Creado entre el' %>
+        <%= f.text_field :created_at_gteq %>
+
+        <%= f.label ' y el ' %>
+        <%= f.text_field :created_at_lteq %>
+
+    </div>
+    <div class="actions">
+        <%= f.submit "Filtrar" %>
+    </div>
+<% end %>
+
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>

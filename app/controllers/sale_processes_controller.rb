@@ -5,7 +5,8 @@ class SaleProcessesController < ApplicationController
       # GET /sale_processes
       # GET /sale_processes.json
       def index
-        @sale_processes = SaleProcess.all
+        @search = SaleProcess.search(params[:q])
+        @sale_processes = @search.result
       end
 
       # GET /sale_processes/1
